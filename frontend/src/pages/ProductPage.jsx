@@ -66,9 +66,13 @@ const ProductPage = () => {
 
     return (
         <div className="product-page-container">
-            <Link to="/" className="back-btn">
-                <ArrowLeft size={20} /> Back to Products
-            </Link>
+            <nav className="breadcrumbs">
+                <Link to="/">Home</Link>
+                <span className="separator">/</span>
+                <Link to={`/?category=${product.category?._id}`}>{product.category?.name || 'Category'}</Link>
+                <span className="separator">/</span>
+                <span className="current">{product.name}</span>
+            </nav>
 
             <div className="product-details-grid">
                 <div className="product-image-section">
@@ -80,13 +84,19 @@ const ProductPage = () => {
                 </div>
 
                 <div className="product-info-section">
-                    <div className="category-badge">{product.category?.name || 'Category'}</div>
+                    <div className="brand-header">
+                        <span className="product-brand-name">{product.brand}</span>
+                        <span className="assured-badge-large">✔ Assured</span>
+                    </div>
                     <h1 className="product-title">{product.name}</h1>
-                    <p className="product-brand">By: <span>{product.brand}</span></p>
 
-                    <div className="product-price-large">
-                        Rs. {currentPrice.toFixed(2)}
-                        <span className="gst-info">(Inclusive of {product.gstPercentage}% GST)</span>
+                    <div className="product-price-section">
+                        <div className="main-price-row">
+                            <span className="price-large">Rs. {currentPrice.toFixed(2)}</span>
+                            <span className="mrp-large">Rs. {(currentPrice * 1.4).toFixed(2)}</span>
+                            <span className="discount-large">40% off</span>
+                        </div>
+                        <div className="gst-tag">Inclusive of {product.gstPercentage}% GST</div>
                     </div>
 
                     <p className="product-description">{product.description}</p>

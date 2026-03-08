@@ -195,10 +195,20 @@ const HomePage = () => {
                                             {product.category?.name || 'Academic Supply'}
                                         </span>
                                         <Link to={`/product/${product._id}`} className="product-name" style={{ textDecoration: 'none' }}>
-                                            <h3 style={{ fontSize: '1.2rem', margin: '0.5rem 0' }}>{product.name}</h3>
+                                            <h3 style={{ fontSize: '1.2rem', margin: '0.4rem 0' }}>
+                                                {product.name}
+                                                <span className="assured-badge">✔ Assured</span>
+                                            </h3>
                                         </Link>
-                                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 'auto', paddingTop: '1rem', borderTop: '1px solid var(--border-color)' }}>
-                                            <div className="product-price" style={{ color: 'var(--primary-color)', fontSize: '1.3rem' }}>Rs. {product.basePrice}</div>
+                                        <div className="price-container">
+                                            <div className="price-mrp-row">
+                                                <span className="product-price">Rs. {product.basePrice}</span>
+                                                <span className="price-mrp">Rs. {Math.round(product.basePrice * 1.4)}</span>
+                                                <span className="price-discount">40% off</span>
+                                            </div>
+                                            <span className="free-delivery-tag">Free delivery</span>
+                                        </div>
+                                        <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '1rem' }}>
                                             <Link to={`/product/${product._id}`} style={{ background: 'var(--accent-color)', color: 'white', padding: '0.5rem 1.2rem', borderRadius: '6px', textDecoration: 'none', fontWeight: 800, fontSize: '0.9rem', boxShadow: '0 4px 10px rgba(56, 178, 172, 0.3)' }}>
                                                 ADD +
                                             </Link>
