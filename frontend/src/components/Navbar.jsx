@@ -83,6 +83,11 @@ const Navbar = () => {
                                     Inventory
                                 </Link>
                             )}
+                            {userLogin.userInfo.role === 'admin' && (
+                                <Link to="/admin/categories" className="nav-link dashboard-link" style={{ marginRight: '10px' }}>
+                                    Categories
+                                </Link>
+                            )}
                             <button onClick={handleLogout} className="nav-link logout-btn" title="Logout">
                                 <LogOut size={20} />
                             </button>

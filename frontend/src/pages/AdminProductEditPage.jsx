@@ -17,6 +17,8 @@ const AdminProductEditPage = () => {
     const [description, setDescription] = useState('');
     const [gstPercentage, setGstPercentage] = useState(18);
     const [variations, setVariations] = useState([]);
+    const [categories, setCategories] = useState([]);
+    const [uploading, setUploading] = useState(false);
 
     // New Variation State
     const [newSku, setNewSku] = useState('');

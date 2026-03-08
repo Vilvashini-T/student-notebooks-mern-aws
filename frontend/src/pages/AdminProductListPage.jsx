@@ -14,6 +14,8 @@ const AdminProductListPage = () => {
     const { userLogin: { userInfo } } = state;
     const navigate = useNavigate();
 
+    const [categories, setCategories] = useState([]);
+
     const fetchProducts = async () => {
         try {
             const { data } = await axios.get('http://localhost:5000/api/products');
@@ -25,12 +27,22 @@ const AdminProductListPage = () => {
         }
     };
 
+    const fetchCategories = async () => {
+        try {
+            const { data } = await axios.get('http://localhost:5000/api/products/categories');
+            setCategories(data);
+        } catch (err) {
+            console.error('Error fetching categories:', err);
+        }
+    };
+
     useEffect(() => {
         if (!userInfo || userInfo.role !== 'admin') {
             navigate('/login');
             return;
         }
         fetchProducts();
+        fetchCategories();
     }, [userInfo, navigate]);
 
     const deleteHandler = async (id) => {
@@ -46,14 +58,18 @@ const AdminProductListPage = () => {
     };
 
     const createProductHandler = async () => {
+        if (categories.length === 0) {
+            alert('Please create at least one category first.');
+            return;
+        }
         try {
             const config = { headers: { Authorization: `Bearer ${userInfo.token}` } };
-            // Passing default generic info to create a placeholder product first
             const { data } = await axios.post('http://localhost:5000/api/products', {
                 name: 'Sample Product ' + Date.now(),
                 basePrice: 0,
                 description: 'Sample description',
                 brand: 'Student Note Books',
+                category: categories[0]._id, // Provide the first category as default
                 gstPercentage: 18,
                 slug: 'sample-product-' + Date.now()
             }, config);

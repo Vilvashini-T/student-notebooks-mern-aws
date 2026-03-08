@@ -12,6 +12,7 @@ import OrderDetailsPage from './pages/OrderDetailsPage';
 import OrderListPage from './pages/OrderListPage';
 import AdminProductListPage from './pages/AdminProductListPage';
 import AdminProductEditPage from './pages/AdminProductEditPage';
+import AdminCategoryPage from './pages/AdminCategoryPage';
 
 import './App.css';
 
@@ -33,6 +34,7 @@ function App() {
           <Route path="/admin/orders" element={<OrderListPage />} />
           <Route path="/admin/products" element={<AdminProductListPage />} />
           <Route path="/admin/product/:id/edit" element={<AdminProductEditPage />} />
+          <Route path="/admin/categories" element={<AdminCategoryPage />} />
         </Routes>
       </main>
       <Footer />
