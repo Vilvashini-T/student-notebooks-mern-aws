@@ -62,6 +62,23 @@ const AdminProductEditPage = () => {
 
     const uploadFileHandler = async (e) => {
         const file = e.target.files[0];
+        if (!file) return;
+        uploadToServer(file);
+    };
+
+    const handlePaste = async (e) => {
+        const items = e.clipboardData.items;
+        for (let i = 0; i < items.length; i++) {
+            if (items[i].type.indexOf('image') !== -1) {
+                const file = items[i].getAsFile();
+                if (file) {
+                    uploadToServer(file);
+                }
+            }
+        }
+    };
+
+    const uploadToServer = async (file) => {
         const formData = new FormData();
         formData.append('image', file);
         setUploading(true);
@@ -72,8 +89,6 @@ const AdminProductEditPage = () => {
             };
 
             const { data } = await axios.post('http://localhost:5000/api/upload', formData, config);
-
-            // Note: Data returns like '/uploads/image-12345.jpg'
             setImage(`http://localhost:5000${data}`);
             setUploading(false);
         } catch (err) {
@@ -160,10 +175,16 @@ const AdminProductEditPage = () => {
                         <input type="number" id="basePrice" value={basePrice} onChange={(e) => setBasePrice(e.target.value)} required />
                     </div>
 
-                    <div className="form-group">
-                        <label htmlFor="image">Image Path</label>
-                        <input type="text" id="image" value={image} onChange={(e) => setImage(e.target.value)} />
-                        <input type="file" id="image-file" label="Choose File" onChange={uploadFileHandler} style={{ marginTop: '0.8rem', padding: '0.5rem', background: '#f3f4f6' }} />
+                    <div className="form-group"
+                        onPaste={handlePaste}
+                        style={{ border: '2px dashed #d1d5db', padding: '1rem', borderRadius: '12px', background: '#f9fafb' }}>
+                        <label htmlFor="image">Product Image (Upload or Paste Screenshot)</label>
+                        <input type="text" id="image" value={image} onChange={(e) => setImage(e.target.value)} placeholder="URL will appear here..." />
+                        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginTop: '0.8rem' }}>
+                            <input type="file" id="image-file" label="Choose File" onChange={uploadFileHandler} style={{ flex: 1, padding: '0.5rem', background: '#ffffff', borderRadius: '6px', border: '1px solid #e5e7eb' }} />
+                            <div style={{ fontSize: '0.8rem', color: '#6b7280', fontWeight: 600 }}>OR PASTE IMG</div>
+                        </div>
+                        {image && <img src={image} alt="Preview" style={{ marginTop: '1rem', maxHeight: '150px', borderRadius: '8px', border: '1px solid #e5e7eb' }} />}
                         {uploading && <div style={{ fontSize: '0.85rem', color: '#10b981', marginTop: '0.5rem' }}>Uploading...</div>}
                     </div>
 
