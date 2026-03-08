@@ -1,0 +1,23 @@
+.nav-user-menu {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-greeting {
+    font-weight: 600;
+    color: #374151;
+}
+
+.logout-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: #ef4444;
+}
+
+.logout-btn:hover {
+    color: #dc2626;
+}

@@ -1,0 +1,80 @@
+.footer-container {
+    background-color: #111827;
+    /* Dark modern theme */
+    color: #d1d5db;
+    /* Light gray text */
+    padding: 4rem 2rem 1rem;
+    margin-top: 4rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-bottom: 1px solid #374151;
+    padding-bottom: 3rem;
+}
+
+.footer-section.brand h2 {
+    color: #f9fafb;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.brand-highlight {
+    color: var(--primary-color);
+}
+
+.footer-section p {
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    color: #9ca3af;
+}
+
+.footer-section h3 {
+    color: #f9fafb;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.footer-section h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -0.5rem;
+    width: 2.5rem;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-section ul li a {
+    color: #9ca3af;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    font-size: 0.95rem;
+}
+
+.footer-section ul li a:hover {
+    color: var(--primary-hover);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 1.5rem;
+    font-size: 0.85rem;
+    color: #6b7280;
+}
