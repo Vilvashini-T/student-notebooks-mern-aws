@@ -53,7 +53,7 @@
     background: var(--primary-color);
     color: white;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 4px rgba(159, 122, 234, 0.2);
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
 }
 
 .step.active .step-label {

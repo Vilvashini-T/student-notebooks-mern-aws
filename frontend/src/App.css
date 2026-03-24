@@ -4,37 +4,41 @@
 
 /* 1. CSS Variables / Design Tokens */
 :root {
-  /* Pastel Purple & Complementary Theme */
-  --primary-color: #9f7aea;
-  /* Pastel Purple */
-  --primary-hover: #805ad5;
-  /* Deep Purple */
-  --secondary-color: #2d3748;
-  /* Dark Graphite */
-  --accent-color: #38b2ac;
-  /* Mint Complementary */
-  --accent-hover: #319795;
+  /* Premium Violet / Indigo Palette (Flipkart Enterprise Edition) */
+  --primary-color: #4f46e5;
+  /* Premium Indigo/Violet */
+  --primary-hover: #4338ca;
+  --secondary-color: #1e1b4b;
+  /* Deep Navy Indigo */
 
-  /* Backgrounds */
+  /* Flipkart-style Action Colors */
+  --accent-color: #fb641b;
+  /* High-impact Action Orange */
+  --accent-hover: #e35b17;
+  --success-color: #388e3c;
+
+  /* Backgrounds & Canvas */
   --bg-main: #ffffff;
-  --bg-light: #faf5ff;
-  /* Extremely light pastel tint */
-  --bg-dark: #f3ebfc;
+  --bg-light: #f1f3f6;
+  /* Standard E-commerce background */
+  --bg-surface: #ffffff;
 
-  /* Text Colors */
-  --text-main: #2d3748;
-  --text-muted: #718096;
-  --text-light: #f7fafc;
+  /* Text System */
+  --text-main: #212121;
+  --text-muted: #878787;
+  --text-light: #ffffff;
 
-  /* Borders & Shadows */
-  --border-color: #e5e7eb;
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  /* Borders & Shadows - Soft & Clean */
+  --border-color: #e0e0e0;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.08);
 
   /* Typography */
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-sans: 'Inter', -apple-system, system-ui, sans-serif;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
 }
 
 /* 2. Reset & Box Sizing */

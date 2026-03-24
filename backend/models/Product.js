@@ -1,5 +1,12 @@
 const mongoose = require('mongoose');
 
+const reviewSchema = new mongoose.Schema({
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    name: { type: String, required: true },
+    rating: { type: Number, required: true },
+    comment: { type: String, required: true },
+}, { timestamps: true });
+
 const productSchema = new mongoose.Schema({
     name: { type: String, required: true },
     slug: { type: String, required: true, unique: true },
@@ -10,6 +17,7 @@ const productSchema = new mongoose.Schema({
     brand: { type: String, default: 'Student Note Books' },
     images: [{ type: String }],
     isActive: { type: Boolean, default: true },
+    reviews: [reviewSchema],
     averageRating: { type: Number, default: 0 },
     numOfReviews: { type: Number, default: 0 }
 }, { timestamps: true });

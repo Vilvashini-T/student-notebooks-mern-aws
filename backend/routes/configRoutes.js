@@ -16,7 +16,7 @@ router.post('/razorpayUrl', async (req, res) => {
         });
 
         const options = {
-            amount: req.body.amount * 100, // Razorpay takes amount in paisa (smallest unit)
+            amount: Math.round(req.body.amount * 100), // Razorpay takes strictly integer amount in paisa (smallest unit)
             currency: 'INR',
             receipt: 'receipt_order_' + Date.now(),
         };

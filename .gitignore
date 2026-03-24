@@ -13,3 +13,9 @@ yarn-error.log*
 .idea/
 *.swp
 *.bak
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+.terraform.lock.hcl

@@ -26,9 +26,11 @@ const orderSchema = new mongoose.Schema({
         update_time: { type: String },
         email_address: { type: String }
     },
+    coupon: { type: mongoose.Schema.Types.ObjectId, ref: 'Coupon' },
     itemsPrice: { type: Number, required: true },
     taxPrice: { type: Number, required: true },
     shippingPrice: { type: Number, required: true },
+    discountPrice: { type: Number, default: 0 },
     totalPrice: { type: Number, required: true },
 
     orderStatus: {

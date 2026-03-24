@@ -63,14 +63,14 @@
 .step-item.active .step-icon-box {
     border-color: var(--primary-color);
     color: var(--primary-color);
-    background: var(--bg-light);
+    background: #f0f7ff;
     transform: scale(1.1);
-    box-shadow: 0 0 15px rgba(159, 122, 234, 0.2);
+    box-shadow: 0 0 15px rgba(79, 70, 229, 0.2);
 }
 
 .step-item.completed .step-icon-box {
-    border-color: var(--accent-color);
-    background: var(--accent-color);
+    border-color: #388e3c;
+    background: #388e3c;
     color: #ffffff;
 }
 

@@ -10,8 +10,8 @@
 .auth-card {
     background-color: #ffffff;
     padding: 3rem;
-    border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-lg);
     width: 100%;
     max-width: 450px;
 }
@@ -61,21 +61,22 @@
     outline: none;
     border-color: var(--primary-color);
     background-color: #ffffff;
-    box-shadow: 0 0 0 3px rgba(159, 122, 234, 0.2);
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.1);
 }
 
 .auth-btn {
     width: 100%;
-    background-color: var(--primary-color);
+    background-color: var(--accent-color);
     color: #ffffff;
-    padding: 1rem;
-    font-size: 1.1rem;
+    padding: 0.8rem;
+    font-size: 1rem;
     font-weight: 700;
     border: none;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
     transition: all 0.2s;
     margin-top: 1rem;
+    text-transform: uppercase;
 }
 
 .auth-btn:hover:not(:disabled) {

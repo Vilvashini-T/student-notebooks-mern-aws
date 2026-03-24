@@ -1,33 +1,33 @@
 .navbar {
   background-color: var(--primary-color);
-  padding: 1rem 2rem;
+  padding: 0.8rem 2rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
 }
 
 .navbar-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
+  gap: 2rem;
 }
 
 .navbar-brand {
   display: flex;
   align-items: center;
   text-decoration: none;
+  min-width: 150px;
 }
 
 .navbar-logo {
-  height: 80px;
-  /* larger logo */
+  height: 50px;
   width: auto;
-  /* No background, padding, or border radius – keep PNG transparency */
   object-fit: contain;
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform 0.3s ease;
 }
 
 .navbar-logo:hover {
@@ -36,45 +36,40 @@
 
 .navbar-search {
   display: flex;
-  flex: 0.55;
+  flex: 1;
+  max-width: 600px;
   background-color: #ffffff;
-  border-radius: 999px;
+  border-radius: 2px;
+  /* Flipkart uses very low radius for search usually */
   overflow: hidden;
-  padding: 0.2rem;
-  border: 1px solid transparent;
-  transition: all 0.3s ease;
-}
-
-.navbar-search:focus-within {
-  border-color: var(--accent-color);
-  box-shadow: 0 0 0 3px rgba(56, 178, 172, 0.3);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 47px;
 }
 
 .navbar-search input {
   flex: 1;
   border: none;
   background: transparent;
-  padding: 0.5rem 1rem;
-  font-size: 0.95rem;
+  padding: 0 1rem;
+  font-size: 0.9rem;
   outline: none;
-  color: #374151;
+  color: #212121;
 }
 
 .search-btn {
-  background-color: var(--accent-color);
-  color: white;
+  background-color: #ffffff;
+  color: var(--primary-color);
   border: none;
-  border-radius: 999px;
-  padding: 0.5rem 1.5rem;
+  padding: 0 1rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.2s;
+  border-left: 1px solid #f0f0f0;
 }
 
 .search-btn:hover {
-  background-color: var(--accent-hover);
+  background-color: #f9f9f9;
 }
 
 .navbar-links {

@@ -4,10 +4,10 @@ const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  role: { 
-    type: String, 
-    enum: ['customer', 'shopkeeper', 'admin'], 
-    default: 'customer' 
+  role: {
+    type: String,
+    enum: ['customer', 'shopkeeper', 'admin'],
+    default: 'customer'
   },
   phone: { type: String, required: true },
   addresses: [{
@@ -18,7 +18,10 @@ const userSchema = new mongoose.Schema({
     postalCode: { type: String, required: true },
     isDefault: { type: Boolean, default: false }
   }],
+  wishlist: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product' }],
   isActive: { type: Boolean, default: true },
+  resetPasswordToken: String,
+  resetPasswordExpire: Date,
 }, { timestamps: true });
 
 const User = mongoose.model('User', userSchema);
