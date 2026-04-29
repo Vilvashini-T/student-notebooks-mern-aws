@@ -1,35 +1,128 @@
-# 📓 Student Note Books - MERN Application
+# 📓 Student Note Books — MERN Web Application
 
-A full-stack application built for students to organize, manage, and track their daily notes and academic progress.
+> **This repository contains the web application source code** for "Student Note Books", a full-stack e-commerce platform for students to browse, order, and manage academic notebook products.
 
-This repository holds the application source code, while the infrastructure is managed entirely via our companion Terraform repository.
+---
+
+## 💡 What is this application?
+
+Student Note Books is a fully functional MERN-stack e-commerce web app that includes:
+- 📦 Product catalogue with categories and variations (Ruled / Unruled, sizes)
+- 🛒 Cart and order management
+- 🔐 User authentication with JWT (Login / Register)
+- 👤 Admin dashboard to manage products, orders, and users
+- 💳 Payment integration with Razorpay
+- 📧 Email notifications via Nodemailer
+- 🔒 Security features: rate limiting, helmet, bcrypt password hashing
+
+---
 
 ## 🛠️ Technology Stack
-- **Frontend:** React (Vite), TailwindCSS
-- **Backend:** Node.js, Express.js
-- **Database:** MongoDB
-- **Process Manager:** PM2 (for production deployment)
+
+| Layer | Technology |
+|---|---|
+| **Frontend** | React 19, Vite, React Router, Axios |
+| **Backend** | Node.js, Express.js |
+| **Database** | MongoDB with Mongoose ODM |
+| **Authentication** | JSON Web Tokens (JWT) + bcryptjs |
+| **File Uploads** | Cloudinary + Multer |
+| **Process Manager** | PM2 (used in production deployment) |
+
+---
 
 ## 📂 Project Structure
-- `/frontend`: Contains the Vite-based React application.
-- `/backend`: Contains the Express API and MongoDB Mongoose models.
+
+```
+student-notebooks-mern-aws/
+├── backend/
+│   ├── config/         → Database connection setup
+│   ├── controllers/    → Route handler logic (users, products, orders)
+│   ├── middleware/     → Auth verification, error handling
+│   ├── models/         → MongoDB/Mongoose data models
+│   ├── routes/         → API route definitions
+│   ├── utils/          → Helper utilities
+│   ├── uploads/        → Local file upload directory
+│   ├── server.js       → App entry point, Express configuration
+│   ├── seeder.js       → Seeds database with initial sample data
+│   └── .env.example    → Template showing all required environment variables
+└── frontend/
+    ├── public/         → Static assets
+    ├── src/            → React components, pages, and hooks
+    ├── index.html      → HTML entry point
+    └── vite.config.js  → Vite build configuration
+```
+
+---
 
 ## 🚀 Local Development Setup
 
-### 1. Backend Setup
-1. Open a terminal in the `backend` folder.
-2. Install dependencies: `npm install`
-3. Create a `.env` file and add your MongoDB connection string and port.
-4. (Optional) Run the database seeder: `node seeder.js`
-5. Start the development server: `npm run dev` or `node server.js`
+### Prerequisites
+- [Node.js](https://nodejs.org/) (v20 or higher)
+- [MongoDB](https://www.mongodb.com/try/download/community) running locally on port 27017
 
-### 2. Frontend Setup
-1. Open a terminal in the `frontend` folder.
-2. Install dependencies: `npm install`
-3. Create a `.env` file and add: `VITE_API_BASE_URL=http://localhost:5000`
-4. Start the frontend: `npm run dev`
+---
 
-## ☁️ Production Deployment
-This app is designed to be deployed using our Terraform automated script. When deployed to AWS:
-1. The backend runs on port 5000 via PM2.
-2. The frontend is built (`npm run build`) and served on port 80 via the `serve` package.
+### Step 1 — Backend Setup
+
+```bash
+cd backend
+npm install
+```
+
+Create a `.env` file by copying the example:
+```bash
+copy .env.example .env
+```
+
+Edit `.env` and fill in your values (see `.env.example` for required fields).
+
+Seed the database with sample products and an admin user:
+```bash
+node seeder.js
+```
+
+> 🔑 **Default login after seeding:**
+> Email: `admin@studentnotebooks.com` | Password: `123456`
+
+Start the backend server:
+```bash
+npm run dev     # Development (with auto-reload)
+# or
+node server.js  # Production style
+```
+
+Backend runs on: **http://localhost:5000**
+
+---
+
+### Step 2 — Frontend Setup
+
+```bash
+cd frontend
+npm install
+```
+
+Create a `.env` file inside the `frontend` folder:
+```
+VITE_API_BASE_URL=http://localhost:5000
+```
+
+Start the frontend:
+```bash
+npm run dev
+```
+
+Frontend runs on: **http://localhost:5173**
+
+---
+
+## ☁️ Production Deployment (Automated via Terraform)
+
+This app is designed to be deployed to AWS automatically using our companion Terraform repository. The Terraform script handles everything — no manual server setup needed.
+
+👉 **Terraform Infrastructure Repo:** https://github.com/Vilvashini-T/devops_terraform
+
+When deployed to AWS:
+- Backend API runs on port **5000** managed by PM2
+- Frontend is built for production and served on port **80** using the `serve` package
+- MongoDB runs locally on the same EC2 server on port **27017**
